@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { css } from 'emotion'
 import Img from 'gatsby-image'
+import { Parallax } from 'react-scroll-parallax'
+import { Spring } from 'react-spring'
 
 const Wrapper = styled.div`
   color: #fff;
@@ -12,6 +14,7 @@ const Wrapper = styled.div`
   height: 0px;
   display: flex;
   justify-content: center;
+  z-index: 1;
 `
 
 const Title = styled.div`
@@ -20,6 +23,7 @@ const Title = styled.div`
   display: flex;
   padding-right: 0.9em;
   font-size: 1.3vw;
+  
 
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 0.5em;
@@ -50,7 +54,7 @@ const HeaderImg = styled(Img)`
   position: absolute;
   overflow: visible;
   margin: auto;
-  margin-top: 0px;
+  margin-top: -20px;
   z-index: -2;
   min-height: 430px;
 `
@@ -85,7 +89,15 @@ const Header = props => (
         </RightSide>
       </Title>
     </Wrapper>
-    <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
+    <Parallax
+      className={css`z-index: -5;`}
+      offsetYMax={20}
+      offsetYMin={-20}
+      slowerScrollRate
+      tag='figure'
+    >
+      <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
+    </Parallax>
   </React.Fragment>
 )
 

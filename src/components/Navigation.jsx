@@ -37,6 +37,7 @@ const Nav = styled.nav`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
+  z-index: 2;
   padding: 0 ${props => props.theme.spacer.horizontal};
   a {
     color: white;

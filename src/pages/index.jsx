@@ -2,16 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { ProjectListing, Layout, HomeHeader } from 'components'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 const Index = ({
   data: { allMarkdownRemark: { edges: projectEdges }, headerImg }
 }) => (
-  <React.Fragment>
+  <ParallaxProvider>
     <Layout>
       <HomeHeader headerImg={headerImg} />
       <ProjectListing projectEdges={projectEdges} />
     </Layout>
-  </React.Fragment>
+  </ParallaxProvider>
 )
 
 export default Index

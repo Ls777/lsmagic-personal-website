@@ -9,7 +9,7 @@ const Wrapper = styled.header`
   align-items: center;
   display: flex;
   max-width: ${props => props.theme.container.base};
-  max-width: 55rem;
+  max-width: 65rem;
   padding: 1rem 0rem 1rem 0rem;
   margin: auto;
   a {

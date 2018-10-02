@@ -1,41 +1,91 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
+import { css } from 'emotion'
 import Img from 'gatsby-image'
 
 const Wrapper = styled.div`
   color: #fff;
-  margin: 15rem 0rem 25rem 0rem;
-  padding: 6rem ${props => props.theme.spacer.horizontal};
-  text-align: center;
-  z-index: 1;
-  h1 {
-    margin-bottom: 0;
-  }
+  width: 100%;
+  margin-top: -70px;
+  position:relative;
+  height: 0px;
+  display: flex;
+  justify-content: center;
 `
 
-const ImgWrapper = styled.div`
-  position:relative;
-  height: 70px;
-  z-index: -1;
+const Title = styled.div`
+  position: absolute;
+  margin-top: 20vw;
+  display: flex;
+  padding-right: 0.9em;
+  font-size: 1.3vw;
+
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    font-size: 0.5em;
+    margin-top: 8rem;
+  }
+
+`
+const LeftSide = styled.div`
+  flex: 1;
+  margin-right: 1.2em;
+  text-align: right;
+  h1 {
+    font-size: 5em;
+    line-height: 0.9em;
+  }
+`
+const RightSide = styled.div`
+  flex: 1;
+  margin-left: 1.2em;
+  div {
+    font-size: 2.8em;
+    line-height: 1.05em;
+    font-weight: 400;
+  }
 `
 
 const HeaderImg = styled(Img)`
   position: absolute;
   overflow: visible;
-  margin-top: -70px;
+  margin: auto;
+  margin-top: 0px;
   z-index: -2;
-  position: relative;
+  min-height: 430px;
 `
+
+const Name = () => (
+  <h1>
+    LOU
+    <span className={css`margin-left: 0.0em;margin-right: 0.01em;`}>I</span>
+    S SANCH
+    <span className={css`margin-left: -0.05em;margin-right: 0.02em;`}>E</span>
+    Z
+  </h1>
+)
+
+const Specialties = () => (
+  <React.Fragment>
+    <div>web developer</div>
+    <div>designer</div>
+    <div>artist</div>
+  </React.Fragment>
+)
 
 const Header = props => (
   <React.Fragment>
-    <ImgWrapper>
-      <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
-    </ImgWrapper>
     <Wrapper>
-      <h1>Louis Sanchez</h1>
+      <Title>
+        <LeftSide>
+          <Name />
+        </LeftSide>
+        <RightSide>
+          <Specialties />
+        </RightSide>
+      </Title>
     </Wrapper>
+    <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
   </React.Fragment>
 )
 

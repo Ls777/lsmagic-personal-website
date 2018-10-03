@@ -4,13 +4,14 @@ import { FaInstagram, FaBehance, FaDribbble } from 'react-icons/fa'
 import styled, { css } from 'react-emotion'
 import config from '../../config/website'
 import theme from '../../config/theme'
+import LsLogo from '../images/LsLogo'
 
 const Wrapper = styled.header`
   align-items: center;
   display: flex;
   max-width: ${props => props.theme.container.base};
   max-width: 65rem;
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 0rem;
   margin: auto;
   
   a {
@@ -91,7 +92,7 @@ const Navigation = ({ dark }) => (
   <Wrapper>
     <Nav dark={dark}>
       <Name>
-        <Link to='/'>{config.siteTitle}</Link>
+        <Link to='/'><LsLogo dark={dark} /></Link>
       </Name>
       <Link
         to='/about'

@@ -1,15 +1,12 @@
 ---
-client: "LekoArts"
 title: "Vintage Typography"
+type: "UI Theming"
+technologies: "Photoshop"
 cover: "./preview.png"
-date: "2017-10-28"
-service: "Theme"
 ---
 # Description
 
-Hi!
-I hope you like this theme and enjoy working with it. I've also made other themes! You can check them out here: [Gatsby Starters](https://www.gatsbyjs.org/docs/gatsby-starters/).
+Vintage Typography is a cohesive icon set and Ui interface design replacement for iOS 5.0. I explored the use of a limited color palette to create a consistent theme. The consistent colors allowed me to experiment with a variety of text styles and images for the icons while still maintaining a cohesive style. I also styled the music player, keyboard, calculator, and toggle panel, creating an overall drastic departure from the original aesthetics.
 
-If you want to see more of my work I recommend visiting my [personal portfolio](https://www.lekoarts.de). By pledging to my [patreon campaign](https://www.patreon.com/lekoarts) you help me making more themes and creating more tutorials. Thanks!
-
+![](./full.png)
 ![](./vintagetype2.jpg)

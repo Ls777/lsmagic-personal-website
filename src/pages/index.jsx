@@ -44,8 +44,8 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            service
-            client
+            title
+            type
             cover {
               childImageSharp {
                 fluid(maxWidth: 500, quality: 90, traceSVG: { color: "#f3f3f3" }) {

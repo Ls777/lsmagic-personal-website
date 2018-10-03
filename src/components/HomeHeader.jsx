@@ -1,7 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { css, injectGlobal } from 'emotion'
+import { css } from 'emotion'
 import Img from 'gatsby-image'
 import { Parallax } from 'react-scroll-parallax'
 import { Spring } from 'react-spring'

@@ -85,9 +85,9 @@ const ProjectListing = ({ projectEdges }) => (
       const overlayColor = sample(overlay)
       return (
         <Parallax
-          className={css`z-index: 0;`}
-          offsetYMax={Math.random() * 50}
-          offsetYMin={Math.random() * -50}
+          className={css`padding: ${Math.random() * 30}px;`}
+          offsetYMax={Math.random() * 90}
+          offsetYMin={Math.random() * -90}
           tag='figure'
         >
           <Item key={project.node.fields.slug}>
@@ -99,8 +99,8 @@ const ProjectListing = ({ projectEdges }) => (
               </ImageWrapper>
               <Link to={project.node.fields.slug}>
                 <Overlay style={{ backgroundColor: overlayColor }} />
-                <h2>{project.node.frontmatter.client}</h2>
-                <div>{project.node.frontmatter.service}</div>
+                <h2>{project.node.frontmatter.title}</h2>
+                <div>{project.node.frontmatter.type}</div>
               </Link>
             </Content>
           </Item>

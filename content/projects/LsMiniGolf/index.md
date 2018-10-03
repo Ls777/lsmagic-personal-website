@@ -1,15 +1,15 @@
 ---
-client: "LekoArts"
 title: "LsMinigolf"
+type: "Virtual reality Development"
+technologies: "Unreal Engine"
 cover: "./preview.png"
-date: "2017-10-28"
-service: "Theme"
 ---
 # Description
 
-Hi!
-I hope you like this theme and enjoy working with it. I've also made other themes! You can check them out here: [Gatsby Starters](https://www.gatsbyjs.org/docs/gatsby-starters/).
 
-If you want to see more of my work I recommend visiting my [personal portfolio](https://www.lekoarts.de). By pledging to my [patreon campaign](https://www.patreon.com/lekoarts) you help me making more themes and creating more tutorials. Thanks!
+LsminiGOLF is a small mobile game I am working on in Unreal Engine 4. It started out as one of several experiments in Virtual Reality. I tried a few various simple, common games and tried to see which concepts were improved due to VR, and could utilize gaze control in an interesting way. It aims to be a straightfoward, fun minigolf game with a bright, colorful aesthetic for the [Samsung GearVR](https://www3.oculus.com/en-us/gear-vr/). Upcoming features in development include a variety of courses and controller support.
+
+
+Download coming soon! Follow me on [twitter](https://twitter.com/ls_magic?lang=en) for more info.
 
 ![](./full.png)

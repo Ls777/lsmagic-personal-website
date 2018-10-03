@@ -1,21 +1,42 @@
 ---
-client: "LekoArts"
 title: "The Monkey Game Project"
+type: "Game Development"
+technologies: "Blender3D"
 cover: "./preview.png"
-date: "2017-10-28"
-service: "Theme"
 ---
 # Description
 
-Hi!
-I hope you like this theme and enjoy working with it. I've also made other themes! You can check them out here: [Gatsby Starters](https://www.gatsbyjs.org/docs/gatsby-starters/).
+##THE GAME
+The Monkey Game Project is an Open Source Blender game project featuring a monkey protagonist who must defeat various enemies and progress to the end of the level. The project was launched on blenderartists.org forums in 2007, with the goal of encouraging anybody interested in game development to dive into the process, regardless of skill level. The Monkey Game Project was featured in a 3-page ‘Making of’ feature article published in the 2008 issue of BlenderArt Magazine.
 
-If you want to see more of my work I recommend visiting my [personal portfolio](https://www.lekoarts.de). By pledging to my [patreon campaign](https://www.patreon.com/lekoarts) you help me making more themes and creating more tutorials. Thanks!
+![](./mgp1.jpg) 
 
-![](./mgp1.jpg)
 ![](./mgp2.jpg)
-![](./mgp3.jpg)
+
+----
+
+##DEVELOPMENT AND SETBACKS
+Diving straight into development allowed us to quickly gain new skillsets in modeling, texturing, animation, and game logic .To help in organizing the development of the game, people who wanted to contribute were split into different teams to focus on various aspects of the project, such as environments, programming, characters, animations, and sound. The looseness and “dive right in” aspect of the process soon proved to be an issue however. Without a structured plan, development soon slowed to a crawl, with just a small team of members who were passionate about the project continuing to work on it.
+
+
+![](./mgp3.jpg) 
+
 ![](./mgp4.jpg)
-![](./mgp5.jpg)
+
+----
+
+##LEARNING FROM EXPERIENCE
+Realizing that we would never reach a release without concrete goals, we decided to refocus ourselves with the goal of releasing a demo. Armed with new experience, we were more organized and more prepared for the realities of game design. We communicated better, set clear goals, launched a new website, and began to meet those goals.
+
+
+![](./mgp5.jpg) 
+
 ![](./mgp6.jpg)
+
+----
+
+
+##RELEASE
+Thanks to our new focus, we were able to finish and release a demo in 2008. It consisted of multiple levels with a boss battle and multiple enemies. It also featured unused assets so that others could make use of them. MGP was released under a Creative Commons Attribution-Noncommercial 3.0 United States License.
+
 ![](./mgp7.jpg)

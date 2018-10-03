@@ -12,6 +12,7 @@ const Wrapper = styled.header`
   max-width: 65rem;
   padding: 1rem 0rem 1rem 0rem;
   margin: auto;
+  
   a {
     color: ${props => props.theme.colors.body_color};
     text-decoration: none;
@@ -40,7 +41,7 @@ const Nav = styled.nav`
   z-index: 2;
   padding: 0 ${props => props.theme.spacer.horizontal};
   a {
-    color: white;
+    color: ${props => (props.dark ? 'white' : props.theme.colors.body_color)};
   }
 
   a:not(:first-child) {
@@ -86,9 +87,9 @@ const SocialMedia = styled.div`
   }
 `
 
-const Navigation = () => (
+const Navigation = ({ dark }) => (
   <Wrapper>
-    <Nav>
+    <Nav dark={dark}>
       <Name>
         <Link to='/'>{config.siteTitle}</Link>
       </Name>

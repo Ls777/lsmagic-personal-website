@@ -5,11 +5,17 @@ import styled from 'react-emotion'
 import Img from 'gatsby-image'
 import sample from 'lodash/sample'
 import { overlay } from '../../config/theme'
+import { Parallax } from 'react-scroll-parallax'
+import { css } from 'emotion'
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   width: 100%;
+
+  @media (max-width: ${props => props.theme.breakpoints.xl}) {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
 `
 
 const Item = styled.div`
@@ -78,20 +84,27 @@ const ProjectListing = ({ projectEdges }) => (
     {projectEdges.map(project => {
       const overlayColor = sample(overlay)
       return (
-        <Item key={project.node.fields.slug}>
-          <Content>
-            <ImageWrapper>
-              <Img
-                fluid={project.node.frontmatter.cover.childImageSharp.fluid}
-              />
-            </ImageWrapper>
-            <Link to={project.node.fields.slug}>
-              <Overlay style={{ backgroundColor: overlayColor }} />
-              <h2>{project.node.frontmatter.client}</h2>
-              <div>{project.node.frontmatter.service}</div>
-            </Link>
-          </Content>
-        </Item>
+        <Parallax
+          className={css`z-index: 0;`}
+          offsetYMax={Math.random() * 50}
+          offsetYMin={Math.random() * -50}
+          tag='figure'
+        >
+          <Item key={project.node.fields.slug}>
+            <Content>
+              <ImageWrapper>
+                <Img
+                  fluid={project.node.frontmatter.cover.childImageSharp.fluid}
+                />
+              </ImageWrapper>
+              <Link to={project.node.fields.slug}>
+                <Overlay style={{ backgroundColor: overlayColor }} />
+                <h2>{project.node.frontmatter.client}</h2>
+                <div>{project.node.frontmatter.service}</div>
+              </Link>
+            </Content>
+          </Item>
+        </Parallax>
       )
     })}
   </Wrapper>

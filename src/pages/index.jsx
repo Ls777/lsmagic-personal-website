@@ -5,11 +5,11 @@ import { ProjectListing, Layout, HomeHeader } from 'components'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
 const Index = ({
-  data: { allMarkdownRemark: { edges: projectEdges }, headerImg }
+  data: { allMarkdownRemark: { edges: projectEdges }, headerImg, headerImg2 }
 }) => (
   <ParallaxProvider>
-    <Layout>
-      <HomeHeader headerImg={headerImg} />
+    <Layout dark>
+      <HomeHeader headerImg={headerImg} headerImg2={headerImg2} />
       <ProjectListing projectEdges={projectEdges} />
     </Layout>
   </ParallaxProvider>
@@ -25,6 +25,16 @@ Index.propTypes = {
   }).isRequired
 }
 
+export const backgroundImage = graphql`
+fragment backgroundImage on File {
+  childImageSharp {
+    fluid(maxWidth: 1920, quality: 90) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+}
+`
+
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -38,7 +48,7 @@ export const pageQuery = graphql`
             client
             cover {
               childImageSharp {
-                fluid(maxWidth: 850, quality: 90, traceSVG: { color: "#f3f3f3" }) {
+                fluid(maxWidth: 500, quality: 90, traceSVG: { color: "#f3f3f3" }) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
@@ -48,11 +58,11 @@ export const pageQuery = graphql`
       }
     },
     headerImg: file(relativePath: { eq: "header-bg.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+      ...backgroundImage
+    },
+    headerImg2: file(relativePath: { eq: "header-bg2.jpg" }) {
+      ...backgroundImage
     }
+
   }
 `

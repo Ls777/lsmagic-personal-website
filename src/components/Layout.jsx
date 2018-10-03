@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'emotion-theming'
 import { SEO, Navigation, Footer } from '../components'
 import theme from '../../config/theme'
+import { css } from 'emotion'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, dark }) => (
   <ThemeProvider theme={theme}>
-    <React.Fragment>
+    <div className={dark && css`background-color: black`}>
       <SEO />
-      <Navigation />
+      <Navigation dark={dark} />
       {children}
-      <Footer />
-    </React.Fragment>
+      <Footer dark={dark} />
+    </div>
   </ThemeProvider>
 )
 

@@ -2,17 +2,20 @@ import React from 'react'
 import styled from 'react-emotion'
 
 const Wrapper = styled.footer`
-  margin: 5rem 0;
-  padding: 1rem ${props => props.theme.spacer.horizontal};
+  margin: 5rem 0 0;
+  padding: 1rem ${props => props.theme.spacer.horizontal} 5rem;
   text-align: center;
+  z-index: 2;
+  color: ${props => (props.dark ? 'white' : props.theme.colors.body_color)};
   a {
     text-decoration: none;
     color: ${props => props.theme.brand.primary};
   }
+
 `
 
-const Footer = () => (
-  <Wrapper>
+const Footer = ({ dark }) => (
+  <Wrapper dark={dark}>
     Copyright © 2018. All right reserved. Pictures by Unsplash.{' '}
     <a href='https://github.com/LeKoArts/gatsby-starter-portfolio-emma'>
       Emma Theme

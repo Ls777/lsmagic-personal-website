@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { css } from 'emotion'
+import { css, injectGlobal } from 'emotion'
 import Img from 'gatsby-image'
 import { Parallax } from 'react-scroll-parallax'
 import { Spring } from 'react-spring'
@@ -19,12 +19,11 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   position: absolute;
-  margin-top: 20vw;
+  margin-top: 17vw;
   display: flex;
-  padding-right: 0.9em;
+  padding-right: 0.6em;
   font-size: 1.3vw;
   
-
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 0.5em;
     margin-top: 8rem;
@@ -33,7 +32,7 @@ const Title = styled.div`
 `
 const LeftSide = styled.div`
   flex: 1;
-  margin-right: 1.2em;
+  margin-right: 1.3em;
   text-align: right;
   h1 {
     font-size: 5em;
@@ -42,7 +41,7 @@ const LeftSide = styled.div`
 `
 const RightSide = styled.div`
   flex: 1;
-  margin-left: 1.2em;
+  margin-left: 1.3em;
   div {
     font-size: 2.8em;
     line-height: 1.05em;
@@ -52,17 +51,41 @@ const RightSide = styled.div`
 
 const HeaderImg = styled(Img)`
   position: absolute;
-  overflow: visible;
-  margin: auto;
-  margin-top: -20px;
   z-index: -2;
-  min-height: 430px;
+  min-height: 520px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 0px;
+  ${generateMediaQueries()}
+  
+`
+
+function generateMediaQueries () {
+  let string = ``
+  for (let i = 1350; i >= 800; i -= 25) {
+    string += `@media (max-width: ${i}px) {
+  margin-top: ${(i - 1350) * 0.2}px;
+}
+`
+  }
+  return string
+}
+
+const HeaderImg2 = styled(Img)`
+  position: absolute;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: -40vw;
+  z-index: -2;
+  min-height: 280px;
 `
 
 const Name = () => (
   <h1>
     LOU
-    <span className={css`margin-left: 0.0em;margin-right: 0.01em;`}>I</span>
+    <span className={css`margin-left: -0.01em;margin-right: 0.01em;`}>I</span>
     S SANCH
     <span className={css`margin-left: -0.05em;margin-right: 0.02em;`}>E</span>
     Z
@@ -91,12 +114,13 @@ const Header = props => (
     </Wrapper>
     <Parallax
       className={css`z-index: -5;`}
-      offsetYMax={20}
-      offsetYMin={-20}
+      offsetYMax={'300px'}
+      offsetYMin={'-200px'}
       slowerScrollRate
       tag='figure'
     >
       <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
+      <HeaderImg2 fluid={props.headerImg2.childImageSharp.fluid} />
     </Parallax>
   </React.Fragment>
 )

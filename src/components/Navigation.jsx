@@ -25,7 +25,7 @@ const Wrapper = styled.header`
 
 
   @media (max-width: ${props => props.theme.breakpoints.s}) {
-    padding: 1rem 0;
+    padding: 0;
     flex-wrap: wrap;
   }
 `

@@ -7,7 +7,7 @@ import { css } from 'emotion'
 
 const Layout = ({ children, dark }) => (
   <ThemeProvider theme={theme}>
-    <div className={dark && css`background-color: black`}>
+    <div className={dark && css`background-color: black;`}>
       <SEO />
       <Navigation dark={dark} />
       {children}

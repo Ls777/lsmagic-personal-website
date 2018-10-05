@@ -37,7 +37,7 @@ fragment backgroundImage on File {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___title], order: DESC }) {
       edges {
         node {
           fields {

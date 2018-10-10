@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import { Container, SEO, Layout } from 'components'
+import { Container, SEO, Layout, Stars } from 'components'
 import sample from 'lodash/sample'
 import config from '../../config/website'
 import { overlay } from '../../config/theme'
-
-const overlayColor = sample(overlay)
+import { Spring, Trail, animated, config as springConfig } from 'react-spring'
 
 const Wrapper = styled.section`
   text-align: center;
@@ -17,6 +16,7 @@ const Wrapper = styled.section`
   color: white;
   padding: 8rem ${props => props.theme.spacer.horizontal};
   margin-bottom: 6rem;
+  overflow: hidden;
 `
 
 const InformationWrapper = styled.div`
@@ -44,30 +44,65 @@ const Bottom = styled.div`
   font-size: 125%;
 `
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 const Project = ({
   pageContext: { slug },
   data: { markdownRemark: postNode }
 }) => {
   const project = postNode.frontmatter
+  const overlayColor = sample(overlay)
+
+  const infoBlocks = [
+    <InfoBlock>
+      <Top>Type</Top>
+      <Bottom>{project.type}</Bottom>
+    </InfoBlock>,
+    <InfoBlock>
+      <Top>Technologies</Top>
+      <Bottom>{project.technologies}</Bottom>
+    </InfoBlock>
+  ]
+
   return (
     <Layout>
       <Helmet title={`${project.title} | ${config.siteTitle}`} />
       <SEO postPath={slug} postNode={postNode} postSEO />
       <Wrapper style={{ backgroundColor: overlayColor }}>
-        <h1>{project.title}</h1>
+        <Stars />
+        <Spring
+          from={{ opacity: 0, transform: 'translate3d(0,150px,0)' }}
+          to={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+          config={{ tension: 170, friction: 30 }}
+        >
+          {props => (
+            <animated.div style={props}><h1>{project.title}</h1></animated.div>
+          )}
+        </Spring>
         <InformationWrapper>
-          <InfoBlock>
-            <Top>Type</Top>
-            <Bottom>{project.type}</Bottom>
-          </InfoBlock>
-          <InfoBlock>
-            <Top>Technologies</Top>
-            <Bottom>{project.technologies}</Bottom>
-          </InfoBlock>
+          <Trail
+            native
+            keys={infoBlocks.map((c, idx) => idx)}
+            from={{ opacity: 0, transform: 'translate3d(0,100px,0)' }}
+            to={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+            delay={180}
+          >
+            {infoBlocks.map(item => props => (
+              <animated.div style={props}>{item}</animated.div>
+            ))}
+          </Trail>
         </InformationWrapper>
       </Wrapper>
       <Container type='text'>
         <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+        <ButtonWrapper>
+          <button onClick={() => window.history.back()}>
+            Back to Home
+          </button>
+        </ButtonWrapper>
       </Container>
     </Layout>
   )

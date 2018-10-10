@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { ProjectListing, Layout, HomeHeader } from 'components'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import { injectGlobal } from 'emotion'
 
 const Index = ({
   data: { allMarkdownRemark: { edges: projectEdges }, headerImg, headerImg2 }
@@ -25,11 +26,20 @@ Index.propTypes = {
   }).isRequired
 }
 
+injectGlobal`
+  html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
+`
+
 export const backgroundImage = graphql`
 fragment backgroundImage on File {
   childImageSharp {
     fluid(maxWidth: 1920, quality: 90) {
-      ...GatsbyImageSharpFluid
+      ...GatsbyImageSharpFluid_noBase64
     }
   }
 }

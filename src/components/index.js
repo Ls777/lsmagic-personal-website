@@ -6,6 +6,7 @@ import Layout from './Layout'
 import Navigation from './Navigation'
 import ProjectListing from './ProjectListing'
 import SEO from './SEO'
+import Stars from './Stars'
 
 export {
   Container,
@@ -15,5 +16,6 @@ export {
   Layout,
   Navigation,
   ProjectListing,
-  SEO
+  SEO,
+  Stars
 }

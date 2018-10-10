@@ -1,6 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-emotion'
+import { Stars } from '../components'
+import { Spring, animated } from 'react-spring'
 
 const Wrapper = styled.div`
   background: ${props => props.theme.brand.secondary};
@@ -11,16 +13,23 @@ const Wrapper = styled.div`
   h1 {
     margin-bottom: 0;
   }
-`;
+  overflow: hidden;
+`
 
 const Header = ({ children }) => (
   <Wrapper>
-    <h1>{children}</h1>
+    <Stars />
+    <Spring
+      from={{ opacity: 0, transform: 'translate3d(0,150px,0)' }}
+      to={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+    >
+      {props => <animated.h1 style={props}>{children}</animated.h1>}
+    </Spring>
   </Wrapper>
-);
+)
 
-export default Header;
+export default Header
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+  children: PropTypes.node.isRequired
+}

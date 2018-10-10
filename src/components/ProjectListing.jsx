@@ -10,7 +10,7 @@ import { css } from 'emotion'
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   width: 100%;
 
   @media (max-width: ${props => props.theme.breakpoints.xl}) {

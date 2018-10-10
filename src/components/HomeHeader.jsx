@@ -43,6 +43,11 @@ const LeftSide = styled.div`
   flex: 1;
   margin-right: 1.3em;
   text-align: right;
+
+  div {
+    display: inline-block;
+  }
+
   h1 {
     font-size: 5em;
     line-height: 0.9em;
@@ -62,7 +67,7 @@ function generateMediaQueries () {
   let string = ``
   for (let i = 1350; i >= 800; i -= 25) {
     string += `@media (max-width: ${i}px) {
-  margin-top: ${(i - 1350) * 0.2}px;
+  margin-top: ${(i - 1350) * 0.4}px;
 }
 `
   }
@@ -70,13 +75,8 @@ function generateMediaQueries () {
 }
 
 const HeaderImg = styled(Img)`
-  position: absolute;
   z-index: 0;
   min-height: 715px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   margin-top: 0px;
   ${parallaxSupport() && generateMediaQueries()}
   @media (max-width: ${props => props.theme.breakpoints.s}) {
@@ -85,21 +85,47 @@ const HeaderImg = styled(Img)`
 `
 
 const HeaderImg2 = styled(Img)`
-  position: absolute;
-  margin: auto;
   margin-top: 0;
-  margin-bottom: -40vw;
-  z-index: 0;
+  margin-bottom: 0vw;
+  z-index: -5;
   min-height: 385px;
 `
 
+const animStyle = (x, opacity) => ({
+  opacity,
+  transform: x.interpolate(x => `translate3d(${x}%,0,0)`)
+})
+
 const Name = () => (
   <h1>
-    LOU
-    <span className={css`margin-left: -0.01em;margin-right: 0.01em;`}>I</span>
-    S SANCH
-    <span className={css`margin-left: -0.05em;margin-right: 0.02em;`}>E</span>
-    Z
+    <Trail
+      native
+      from={{ opacity: 0, x: -50 }}
+      to={{ opacity: 1, x: 0 }}
+      keys={specialties}
+      delay={0}
+    >
+      {[
+        ({ x, opacity }) => (
+          <animated.div style={animStyle(x, opacity)}>
+            LOU
+            <span className={css`margin-left: -0.01em;margin-right: 0.01em;`}>
+              I
+            </span>
+            S
+          </animated.div>
+        ),
+        ({ x, opacity }) => (
+          <animated.div style={animStyle(x, opacity)}>
+            SANCH
+            <span className={css`margin-left: -0.05em;margin-right: 0.02em;`}>
+              E
+            </span>
+            Z
+          </animated.div>
+        )
+      ]}
+    </Trail>
   </h1>
 )
 
@@ -111,14 +137,10 @@ const Specialties = () => (
     from={{ opacity: 0, x: 10 }}
     to={{ opacity: 1, x: 0 }}
     keys={specialties}
+    delay={400}
   >
     {specialties.map(item => ({ x, opacity }) => (
-      <animated.div
-        style={{
-          opacity,
-          transform: x.interpolate(x => `translate3d(${x}%,0,0)`)
-        }}
-      >
+      <animated.div style={animStyle(x, opacity)}>
         {item}
       </animated.div>
     ))}
@@ -126,6 +148,7 @@ const Specialties = () => (
 )
 
 function parallaxSupport () {
+  // return false
   return !isMobile || isMobileSafari || isChrome
 }
 
@@ -140,8 +163,8 @@ const Header = props => {
   const parallax = (
     <Parallax
       className={css`z-index: -5;`}
-      offsetYMax={'300px'}
-      offsetYMin={'-200px'}
+      offsetYMax={'2700px'}
+      offsetYMin={'-1800px'}
       slowerScrollRate
       tag='figure'
     >

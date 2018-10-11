@@ -6,7 +6,7 @@ import config from '../../config/website'
 const Contact = () => (
   <Layout>
     <Helmet title={`Contact | ${config.siteTitle}`} />
-    <Header>Contact</Header>
+    <Header color={'#1e6b8f'}>Contact</Header>
     <Container type='text'>
       <h1>Contact me!</h1>
       <p />

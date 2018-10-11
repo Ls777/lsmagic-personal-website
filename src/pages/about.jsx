@@ -6,7 +6,7 @@ import config from '../../config/website'
 const About = () => (
   <Layout>
     <Helmet title={`About | ${config.siteTitle}`} />
-    <Header>About</Header>
+    <Header color={'#332849'}>About</Header>
     <Container type='text'>
       <h1>Hi!</h1>
       <p>

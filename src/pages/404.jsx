@@ -1,11 +1,12 @@
 import React from 'react'
-import { Layout, Container } from 'components'
+import { Layout, Container, Header } from 'components'
 
 const NotFoundPage = () => (
   <Layout>
+    <Header color={'#000'}>404</Header>
     <Container type='text'>
       <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn't exist... the sadness.</p>
+      <p>Sorry, this page doesn't exist. Try our home page!</p>
     </Container>
   </Layout>
 )

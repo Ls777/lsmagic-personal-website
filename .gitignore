@@ -61,3 +61,6 @@ public/
 
 # Bundle stats
 bundle-stats.json
+
+# test css file
+src/.test.css

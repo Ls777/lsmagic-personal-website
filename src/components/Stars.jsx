@@ -64,7 +64,7 @@ injectGlobal`
 
 @keyframes animStar {
   from {
-    transform: translateY(0px);
+    transform: translateY(-70px);
   }
   to {
     transform: translateY(-2000px);

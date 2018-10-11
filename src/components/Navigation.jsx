@@ -6,11 +6,11 @@ import config from '../../config/website'
 import theme from '../../config/theme'
 import LsLogo from '../images/LsLogo'
 
+// max-width: ${props => props.theme.container.base};
 const Wrapper = styled.header`
   align-items: center;
   display: flex;
-  max-width: ${props => props.theme.container.base};
-  max-width: 65rem;
+  max-width: 55em;
   padding: 0rem;
   margin: auto;
   

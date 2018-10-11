@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { ProjectListing, Layout, HomeHeader } from 'components'
 import { ParallaxProvider } from 'react-scroll-parallax'
-import { injectGlobal } from 'emotion'
+import { injectGlobal, css } from 'emotion'
 
 const Index = ({
   data: { allMarkdownRemark: { edges: projectEdges }, headerImg, headerImg2 }
@@ -59,7 +59,7 @@ export const pageQuery = graphql`
             cover {
               childImageSharp {
                 fluid(maxWidth: 500, quality: 90, traceSVG: { color: "#f3f3f3" }) {
-                  ...GatsbyImageSharpFluid_tracedSVG
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }

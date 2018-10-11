@@ -8,8 +8,8 @@ import {
 } from 'react-device-detect'
 import { css } from 'emotion'
 import Img from 'gatsby-image'
-import { Parallax } from 'react-scroll-parallax'
 import { Trail, config, animated } from 'react-spring'
+import Rellax from 'rellax'
 
 const Wrapper = styled.div`
   color: #fff;
@@ -24,18 +24,22 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   position: absolute;
-  margin-top: 17vw;
+  margin-top: 19vw;
   display: flex;
   padding-right: 0.6em;
   font-size: 1.3vw;
 
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
-    margin-top: 12rem;
+  @media (max-width: 1000px) {
+    margin-top: 14rem;
+  }
+
+  @media (max-width: 800px) {
+    margin-top: 15.5rem;
   }
   
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 0.5em;
-    margin-top: 13rem;
+    margin-top: 17rem;
   }
 
 `
@@ -51,6 +55,7 @@ const LeftSide = styled.div`
   h1 {
     font-size: 5em;
     line-height: 0.9em;
+    margin-bottom: 0px;
   }
 `
 const RightSide = styled.div`
@@ -77,17 +82,19 @@ function generateMediaQueries () {
 const HeaderImg = styled(Img)`
   z-index: 0;
   min-height: 715px;
+  margin: 0;
   margin-top: 0px;
-  ${parallaxSupport() && generateMediaQueries()}
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     height: 715px;
   }
+
+  
 `
 
 const HeaderImg2 = styled(Img)`
   margin-top: 0;
-  margin-bottom: 0vw;
-  z-index: -5;
+  margin-bottom: -40vw;
+  z-index: 0;
   min-height: 385px;
 `
 
@@ -148,50 +155,58 @@ const Specialties = () => (
 )
 
 function parallaxSupport () {
-  // return false
-  return !isMobile || isMobileSafari || isChrome
+  return !isMobile
 }
 
-const Header = props => {
-  const background = (
-    <React.Fragment>
-      <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
-      <HeaderImg2 fluid={props.headerImg2.childImageSharp.fluid} />
-    </React.Fragment>
-  )
+class Header extends React.Component {
+  constructor (props) {
+    super(props)
+  }
 
-  const parallax = (
-    <Parallax
-      className={css`z-index: -5;`}
-      offsetYMax={'2700px'}
-      offsetYMin={'-1800px'}
-      slowerScrollRate
-      tag='figure'
-    >
-      {background}
-    </Parallax>
-  )
+  componentDidMount () {
+    if (parallaxSupport()) {
+      const rellax = new Rellax('.rellax')
+    }
+  }
 
-  return (
-    <React.Fragment>
-      <Wrapper>
-        <Title>
-          <LeftSide>
-            <Name />
-          </LeftSide>
-          <RightSide>
-            <Specialties />
-          </RightSide>
-        </Title>
-      </Wrapper>
-      <CustomView condition={parallaxSupport()} renderWithFragment>
-        {parallax}
-      </CustomView>
-      <CustomView condition={!parallaxSupport()} renderWithFragment>
-        {background}
-      </CustomView>
-    </React.Fragment>
-  )
+  render () {
+    const { props } = this
+
+    const background = (
+      <React.Fragment>
+        <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
+        <HeaderImg2 fluid={props.headerImg2.childImageSharp.fluid} />
+      </React.Fragment>
+    )
+
+    return (
+      <React.Fragment>
+        <Wrapper>
+          <Title>
+            <LeftSide>
+              <Name />
+            </LeftSide>
+            <RightSide>
+              <Specialties />
+            </RightSide>
+          </Title>
+        </Wrapper>
+        <CustomView condition={parallaxSupport()} renderWithFragment>
+          <ParallaxInner className='rellax' data-rellax-speed='-10'>
+            {background}
+          </ParallaxInner>
+        </CustomView>
+        <CustomView condition={!parallaxSupport()} renderWithFragment>
+          {background}
+        </CustomView>
+      </React.Fragment>
+    )
+  }
 }
+
+const ParallaxOuter = styled.div`
+`
+const ParallaxInner = styled.div`
+`
 
 export default Header

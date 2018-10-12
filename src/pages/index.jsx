@@ -2,18 +2,15 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { ProjectListing, Layout, HomeHeader } from 'components'
-import { ParallaxProvider } from 'react-scroll-parallax'
 import { injectGlobal, css } from 'emotion'
 
 const Index = ({
   data: { allMarkdownRemark: { edges: projectEdges }, headerImg, headerImg2 }
 }) => (
-  <ParallaxProvider>
     <Layout dark>
       <HomeHeader headerImg={headerImg} headerImg2={headerImg2} />
       <ProjectListing projectEdges={projectEdges} />
     </Layout>
-  </ParallaxProvider>
 )
 
 export default Index

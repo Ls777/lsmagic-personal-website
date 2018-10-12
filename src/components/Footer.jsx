@@ -16,7 +16,7 @@ const Wrapper = styled.footer`
 
 const Footer = ({ dark }) => (
   <Wrapper dark={dark}>
-    Copyright © 2018. All right reserved. Pictures by Unsplash.{' '}
+    Copyright © 2018. All rights reserved.
     <a href='https://github.com/LeKoArts/gatsby-starter-portfolio-emma'>
       Emma Theme
     </a>

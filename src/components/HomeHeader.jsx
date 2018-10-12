@@ -8,6 +8,7 @@ import {
 } from 'react-device-detect'
 import { css } from 'emotion'
 import Img from 'gatsby-image'
+import { Stars } from 'components'
 import { Trail, config, animated } from 'react-spring'
 import Rellax from 'rellax'
 
@@ -18,7 +19,8 @@ const Wrapper = styled.div`
   position:relative;
   height: 0px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   z-index: 1;
 `
 
@@ -182,6 +184,7 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <Wrapper>
+
           <Title>
             <LeftSide>
               <Name />

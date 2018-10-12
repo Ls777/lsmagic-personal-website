@@ -1,11 +1,17 @@
-import React from 'React'
-import { injectGlobal } from 'emotion'
+import React from 'react'
+import { injectGlobal, css } from 'emotion'
+
+const stars = css`
+position: relative; 
+`
 
 export default () => (
   <React.Fragment>
-    <div id='stars' />
-    <div id='stars2' />
-    <div id='stars3' />
+    <div className={css`position: relative;`}>
+      <div id='stars' className={stars} />
+      <div id='stars2' className={stars} />
+      <div id='stars3' className={stars} />
+    </div>
   </React.Fragment>
 )
 

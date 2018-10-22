@@ -8,4 +8,6 @@ cover: "./preview.png"
 
 Javascript game developed using Anime.js
 
-![](./lekoarts.jpg)
+<iframe width='300' height='200' src="/simon-says/simon.html" frameBorder="0"></iframe>
+
+---

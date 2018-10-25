@@ -7,10 +7,10 @@ import { injectGlobal, css } from 'emotion'
 const Index = ({
   data: { allMarkdownRemark: { edges: projectEdges }, headerImg, headerImg2 }
 }) => (
-    <Layout dark>
-      <HomeHeader headerImg={headerImg} headerImg2={headerImg2} />
-      <ProjectListing projectEdges={projectEdges} />
-    </Layout>
+  <Layout dark>
+    <HomeHeader headerImg={headerImg} headerImg2={headerImg2} />
+    <ProjectListing projectEdges={projectEdges} />
+  </Layout>
 )
 
 export default Index
@@ -22,15 +22,6 @@ Index.propTypes = {
     })
   }).isRequired
 }
-
-injectGlobal`
-  html, body {
-    overflow-x: hidden;
-  }
-  body {
-    position: relative;
-  }
-`
 
 export const backgroundImage = graphql`
 fragment backgroundImage on File {

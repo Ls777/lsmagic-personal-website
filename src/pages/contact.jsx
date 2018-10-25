@@ -24,7 +24,7 @@ const Contact = () => (
           <h4>Message:</h4>
           <textarea type='text' name='message' />
         </label>
-        <input type='submit' value='Submit' />
+        <input type='submit' value='SUBMIT' />
       </FormWrapper>
     </Container>
   </Layout>
@@ -34,11 +34,6 @@ const FormWrapper = styled.form`
 
   display: flex;
   flex-direction: column;
-  input, textarea {
-    width: 100%;
-    padding: 12px 20px;
-    margin: -5px 0px 20px;
-  }
   
 `
 

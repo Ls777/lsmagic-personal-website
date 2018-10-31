@@ -1,15 +1,9 @@
 import React from 'react'
 import styled from 'react-emotion'
-import {
-  CustomView,
-  isMobile,
-  isMobileSafari,
-  isChrome
-} from 'react-device-detect'
+import { isMobile } from 'react-device-detect'
 import { css } from 'emotion'
 import Img from 'gatsby-image'
-import { Stars } from 'components'
-import { Trail, config, animated } from 'react-spring'
+import { Trail, animated } from 'react-spring'
 import Rellax from 'rellax'
 
 const Wrapper = styled.div`
@@ -17,7 +11,6 @@ const Wrapper = styled.div`
   width: 100%;
   margin-top: -92px;
   position:relative;
-  height: 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -40,8 +33,9 @@ const Title = styled.div`
   }
   
   @media (max-width: ${props => props.theme.breakpoints.s}) {
-    font-size: 0.5em;
+    font-size: 0.47em;
     margin-top: 17rem;
+    margin-top: 38vh;
   }
 
 `
@@ -67,19 +61,17 @@ const RightSide = styled.div`
     font-size: 2.8em;
     line-height: 1.05em;
     font-weight: 400;
+    letter-spacing: 0px;
   }
-`
 
-function generateMediaQueries () {
-  let string = ``
-  for (let i = 1350; i >= 800; i -= 25) {
-    string += `@media (max-width: ${i}px) {
-  margin-top: ${(i - 1350) * 0.4}px;
-}
-`
+  @media (max-width: ${props => props.theme.breakpoints.s}) {
+    div {
+      letter-spacing: 2px;
+      font-size: 3em;
+      margin-top: -1px;
+    }
   }
-  return string
-}
+`
 
 const HeaderImg = styled(Img)`
   z-index: 0;
@@ -88,6 +80,8 @@ const HeaderImg = styled(Img)`
   margin-top: 0px;
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     height: 715px;
+    height: 100vh;
+    min-height: 500px;
   }
 
   
@@ -95,7 +89,7 @@ const HeaderImg = styled(Img)`
 
 const HeaderImg2 = styled(Img)`
   margin-top: 0;
-  margin-bottom: -40vw;
+  margin-bottom: -20em;
   z-index: 0;
   min-height: 385px;
 `
@@ -156,35 +150,23 @@ const Specialties = () => (
   </Trail>
 )
 
-function parallaxSupport () {
-  return !isMobile
-}
-
 class Header extends React.Component {
   constructor (props) {
     super(props)
   }
 
   componentDidMount () {
-    if (parallaxSupport()) {
+    if (!isMobile) {
       const rellax = new Rellax('.rellax')
     }
   }
 
   render () {
-    const { props } = this
-
-    const background = (
-      <React.Fragment>
-        <HeaderImg fluid={props.headerImg.childImageSharp.fluid} />
-        <HeaderImg2 fluid={props.headerImg2.childImageSharp.fluid} />
-      </React.Fragment>
-    )
+    const { headerImg, headerImg2 } = this.props
 
     return (
       <React.Fragment>
         <Wrapper>
-
           <Title>
             <LeftSide>
               <Name />
@@ -194,22 +176,13 @@ class Header extends React.Component {
             </RightSide>
           </Title>
         </Wrapper>
-        <CustomView condition={parallaxSupport()} renderWithFragment>
-          <ParallaxInner className='rellax' data-rellax-speed='-10'>
-            {background}
-          </ParallaxInner>
-        </CustomView>
-        <CustomView condition={!parallaxSupport()} renderWithFragment>
-          {background}
-        </CustomView>
+        <div className={!isMobile && 'rellax'} data-rellax-speed='-10'>
+          <HeaderImg fluid={headerImg.childImageSharp.fluid} />
+          <HeaderImg2 fluid={headerImg2.childImageSharp.fluid} />
+        </div>
       </React.Fragment>
     )
   }
 }
-
-const ParallaxOuter = styled.div`
-`
-const ParallaxInner = styled.div`
-`
 
 export default Header

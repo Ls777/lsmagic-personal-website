@@ -5,7 +5,6 @@ import styled from 'react-emotion'
 import Img from 'gatsby-image'
 import sample from 'lodash/sample'
 import { overlay } from '../../config/theme'
-import { css } from 'emotion'
 
 const Wrapper = styled.div`
   display: grid;

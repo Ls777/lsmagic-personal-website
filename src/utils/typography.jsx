@@ -1,6 +1,6 @@
-import Typography from 'typography';
+import Typography from 'typography'
 
-const config = require('../../config/website');
+const config = require('../../config/website')
 
 const typography = new Typography({
   title: 'Emma',
@@ -13,13 +13,13 @@ const typography = new Typography({
   googleFonts: [
     {
       name: config.headerFontFamily,
-      styles: ['700'],
+      styles: ['700']
     },
     {
       name: config.bodyFontFamily,
-      styles: ['400'],
-    },
-  ],
-});
+      styles: ['400']
+    }
+  ]
+})
 
-export default typography;
+export default typography

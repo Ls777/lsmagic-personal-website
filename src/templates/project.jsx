@@ -7,7 +7,7 @@ import { Container, SEO, Layout, Stars } from 'components'
 import sample from 'lodash/sample'
 import config from '../../config/website'
 import { overlay } from '../../config/theme'
-import { Spring, Trail, animated, config as springConfig } from 'react-spring'
+import { Spring, Trail, animated } from 'react-spring'
 
 const Wrapper = styled.section`
   text-align: center;
@@ -29,7 +29,8 @@ const InformationWrapper = styled.div`
 const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
-  margin: ${props => props.theme.spacer.vertical} ${props => props.theme.spacer.horizontal} 0
+  margin: ${props => props.theme.spacer.vertical}
+    ${props => props.theme.spacer.horizontal} 0
     ${props => props.theme.spacer.horizontal};
 `
 
@@ -79,7 +80,9 @@ const Project = ({
           config={{ tension: 170, friction: 30 }}
         >
           {props => (
-            <animated.div style={props}><h1>{project.title}</h1></animated.div>
+            <animated.div style={props}>
+              <h1>{project.title}</h1>
+            </animated.div>
           )}
         </Spring>
         <InformationWrapper>
@@ -99,9 +102,7 @@ const Project = ({
       <Container type='text'>
         <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
         <ButtonWrapper>
-          <button onClick={() => window.history.back()}>
-            Back to Home
-          </button>
+          <button onClick={() => window.history.back()}>Back to Home</button>
         </ButtonWrapper>
       </Container>
     </Layout>

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   color: #fff;
   width: 100%;
   margin-top: -92px;
-  position:relative;
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -31,13 +31,12 @@ const Title = styled.div`
   @media (max-width: 800px) {
     margin-top: 15.5rem;
   }
-  
+
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 0.47em;
     margin-top: 17rem;
     margin-top: 38vh;
   }
-
 `
 const LeftSide = styled.div`
   flex: 1;
@@ -83,8 +82,6 @@ const HeaderImg = styled(Img)`
     height: 100vh;
     min-height: 500px;
   }
-
-  
 `
 
 const HeaderImg2 = styled(Img)`
@@ -112,7 +109,12 @@ const Name = () => (
         ({ x, opacity }) => (
           <animated.div style={animStyle(x, opacity)}>
             LOU
-            <span className={css`margin-left: -0.01em;margin-right: 0.01em;`}>
+            <span
+              className={css`
+                margin-left: -0.01em;
+                margin-right: 0.01em;
+              `}
+            >
               I
             </span>
             S
@@ -121,7 +123,12 @@ const Name = () => (
         ({ x, opacity }) => (
           <animated.div style={animStyle(x, opacity)}>
             SANCH
-            <span className={css`margin-left: -0.05em;margin-right: 0.02em;`}>
+            <span
+              className={css`
+                margin-left: -0.05em;
+                margin-right: 0.02em;
+              `}
+            >
               E
             </span>
             Z
@@ -143,20 +150,15 @@ const Specialties = () => (
     delay={400}
   >
     {specialties.map(item => ({ x, opacity }) => (
-      <animated.div style={animStyle(x, opacity)}>
-        {item}
-      </animated.div>
+      <animated.div style={animStyle(x, opacity)}>{item}</animated.div>
     ))}
   </Trail>
 )
 
 class Header extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   componentDidMount () {
     if (!isMobile) {
+      // eslint-disable-next-line
       const rellax = new Rellax('.rellax')
     }
   }

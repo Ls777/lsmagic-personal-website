@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'emotion-theming'
 import { SEO, Navigation, Footer } from '../components'
 import theme from '../../config/theme'
-import { css, injectGlobal } from 'emotion'
+import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
 
 const Layout = ({ children, dark }) => (
@@ -20,7 +20,7 @@ const Layout = ({ children, dark }) => (
 const ThemeWrapper = styled.div`
   ${props => props.dark && `background-color: black; overflow: hidden;`}
 
-  input, textarea, button {
+  input, textarea, button, .button {
     padding: 12px 20px;
     margin: -5px 0px 20px;
     box-sizing: border-box;
@@ -32,14 +32,18 @@ const ThemeWrapper = styled.div`
     height: 300px;
   }
 
-  button, input[type=submit] {
+  button,
+  input[type='submit'],
+  .button {
     width: auto;
     align-self: center;
     background-color: transparent;
     border: 1px solid lightgrey;
   }
-  
-  button:hover, input[type=submit]:hover {
+
+  button:hover,
+  input[type='submit']:hover,
+  .button:hover {
     border: 1px solid ${props => props.theme.brand.primary};
     cursor: pointer;
   }

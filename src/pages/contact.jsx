@@ -7,7 +7,7 @@ import styled from 'react-emotion'
 const Contact = () => (
   <Layout>
     <Helmet title={`Contact | ${config.siteTitle}`} />
-    <Header color={'#1e6b8f'}>Contact</Header>
+    <Header color={'#1e6b8f'}>Contact Me!</Header>
     <Container type='text'>
       <h1>Contact me!</h1>
       <p />
@@ -15,7 +15,6 @@ const Contact = () => (
         action='https://formspree.io/lsmagicdev+contact@gmail.com'
         method='POST'
       >
-
         <label>
           <h4>Your Email Address:</h4>
           <input type='email' name='Email Address' />
@@ -31,10 +30,8 @@ const Contact = () => (
 )
 
 const FormWrapper = styled.form`
-
   display: flex;
   flex-direction: column;
-  
 `
 
 export default Contact
